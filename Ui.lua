@@ -383,4 +383,42 @@ function Library:New3DCircle()
     return _circle;
 end;
 
+-- New functionality for disable outside FOV button
+local disableFOVButton = CreateButton("Disable Outside FOV")
+disableFOVButton.Parent = visualsTab -- Assuming visualsTab is the parent container for visual settings
+
+local isFOVDisabled = false -- Variable to track the state of the button
+
+-- Add click event to the button
+disableFOVButton.MouseButton1Click:Connect(function()
+    isFOVDisabled = not isFOVDisabled -- Toggle the state
+
+    if isFOVDisabled then
+        -- Call a function to disable rendering outside FOV
+        DisableRenderingOutsideFOV()
+    else
+        -- Call a function to enable rendering outside FOV
+        EnableRenderingOutsideFOV()
+    end
+
+    -- Update the button text to reflect the current state
+    if isFOVDisabled then
+        disableFOVButton.Text = "Enable Outside FOV"
+    else
+        disableFOVButton.Text = "Disable Outside FOV"
+    end
+end)
+
+-- Function to disable rendering outside FOV
+function DisableRenderingOutsideFOV()
+    -- Implement your logic to disable rendering outside FOV here
+    -- For example, you may need to modify your drawing functions to check if the point is within the FOV before rendering
+end
+
+-- Function to enable rendering outside FOV
+function EnableRenderingOutsideFOV()
+    -- Implement your logic to enable rendering outside FOV here
+    -- You may need to revert any changes made in the DisableRenderingOutsideFOV function
+end
+
 return Library;
