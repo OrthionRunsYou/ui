@@ -1,3 +1,10 @@
+-- // Made by Blissful#4992 // --
+-- // Made by Blissful#4992 // --
+-- // Made by Blissful#4992 // --
+-- // Made by Blissful#4992 // --
+
+-- Thx blissfull and whereever I got this from I dont remember
+
 local Library = {};
 
 local Camera = workspace.CurrentCamera;
@@ -47,7 +54,7 @@ function Library:New3DLine()
         Visible      = false;
         ZIndex       = 1;
         Transparency = 1;
-        Color        = nColor(200, 200, 200); -- Light gray color
+        Color        = nColor(255, 255, 255);
         Thickness    = 1;
         From         = nVector3(0,0,0);
         To           = nVector3(0,0,0);
@@ -98,7 +105,7 @@ function Library:New3DCube()
         Visible      = false;
         ZIndex       = 1;
         Transparency = 1;
-        Color        = nColor(200, 200, 200); -- Light gray color
+        Color        = nColor(255, 255, 255);
         Thickness    = 1;
         Filled       = true;
         
@@ -217,7 +224,7 @@ function Library:New3DSquare()
         Visible      = false;
         ZIndex       = 1;
         Transparency = 1;
-        Color        = nColor(200, 200, 200); -- Light gray color
+        Color        = nColor(255, 255, 255);
         Thickness    = 1;
         Filled       = true;
         
@@ -296,7 +303,7 @@ function Library:New3DCircle()
         Visible      = false;
         ZIndex       = 1;
         Transparency = 1;
-        Color        = nColor(200, 200, 200); -- Light gray color
+        Color        = nColor(255, 255, 255);
         Thickness    = 1;
         
         Position     = nVector3(0,0,0);
@@ -382,43 +389,5 @@ function Library:New3DCircle()
 
     return _circle;
 end;
-
--- New functionality for disable outside FOV button
-local disableFOVButton = CreateButton("Disable Outside FOV")
-disableFOVButton.Parent = visualsTab -- Assuming visualsTab is the parent container for visual settings
-
-local isFOVDisabled = false -- Variable to track the state of the button
-
--- Add click event to the button
-disableFOVButton.MouseButton1Click:Connect(function()
-    isFOVDisabled = not isFOVDisabled -- Toggle the state
-
-    if isFOVDisabled then
-        -- Call a function to disable rendering outside FOV
-        DisableRenderingOutsideFOV()
-    else
-        -- Call a function to enable rendering outside FOV
-        EnableRenderingOutsideFOV()
-    end
-
-    -- Update the button text to reflect the current state
-    if isFOVDisabled then
-        disableFOVButton.Text = "Enable Outside FOV"
-    else
-        disableFOVButton.Text = "Disable Outside FOV"
-    end
-end)
-
--- Function to disable rendering outside FOV
-function DisableRenderingOutsideFOV()
-    -- Implement your logic to disable rendering outside FOV here
-    -- For example, you may need to modify your drawing functions to check if the point is within the FOV before rendering
-end
-
--- Function to enable rendering outside FOV
-function EnableRenderingOutsideFOV()
-    -- Implement your logic to enable rendering outside FOV here
-    -- You may need to revert any changes made in the DisableRenderingOutsideFOV function
-end
 
 return Library;
